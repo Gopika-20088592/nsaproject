@@ -14,10 +14,6 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v3
 
-      # ---------------------------
-      # Terraform Setup & Validate
-      # ---------------------------
-
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v3
         with:
@@ -35,10 +31,6 @@ jobs:
         working-directory: ./terraform
         run: terraform fmt -check
 
-      # ---------------------------
-      # Install Ansible
-      # ---------------------------
-
       - name: Install Ansible
         run: |
           sudo apt update
@@ -46,10 +38,6 @@ jobs:
 
       - name: Ansible Syntax Check
         run: ansible-playbook ansible/playbook.yml --syntax-check
-
-      # ---------------------------
-      # Dockerfile Check
-      # ---------------------------
 
       - name: Validate Dockerfile
         run: |
