@@ -77,8 +77,12 @@ jobs:
 
       - name: Deploy on EC2
         run: |
-          ssh -o StrictHostKeyChecking=no ec2-user@44.200.243.162
-            cd /home/ec2-user/nsaproject &&
-            git pull origin main &&
-            sudo ansible-playbook ansible/playbook.yml
-          "
+          ssh -o StrictHostKeyChecking=no ec2-user@44.200.243.162 << 'EOF'
+            cd /home/ec2-user/nsaproject
+            git pull origin main
+            cd app
+            docker build -t myapp .
+            docker stop mycontainer || true
+            docker rm mycontainer || true
+            docker run -d -p 80:80 --name mycontainer myapp
+          EOF
