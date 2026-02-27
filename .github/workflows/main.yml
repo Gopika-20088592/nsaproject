@@ -77,7 +77,7 @@ jobs:
 
       - name: Deploy on EC2
         run: |
-          ssh -o StrictHostKeyChecking=no ubuntu@44.200.243.162/"
+          ssh -o StrictHostKeyChecking=no ubuntu@YOUR_EC2_PUBLIC_IP "
             cd /home/ubuntu/devops-cloud-automation &&
             git pull origin main &&
             sudo ansible-playbook ansible/playbook.yml
