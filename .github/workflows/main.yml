@@ -4,16 +4,13 @@ on:
   push:
     branches:
       - main
-  pull_request:
-    branches:
-      - main
 
 jobs:
+
   build-and-validate:
     runs-on: ubuntu-latest
 
     steps:
-
       - name: Checkout Repository
         uses: actions/checkout@v3
 
@@ -51,7 +48,7 @@ jobs:
         run: ansible-playbook ansible/playbook.yml --syntax-check
 
       # ---------------------------
-      # Dockerfile Lint (basic)
+      # Dockerfile Check
       # ---------------------------
 
       - name: Validate Dockerfile
@@ -62,3 +59,26 @@ jobs:
             echo "Dockerfile missing"
             exit 1
           fi
+
+
+  deploy:
+    needs: build-and-validate
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
+      - name: Setup SSH Key
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.EC2_KEY }}" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+
+      - name: Deploy on EC2
+        run: |
+          ssh -o StrictHostKeyChecking=no ubuntu@44.200.243.162/"
+            cd /home/ubuntu/devops-cloud-automation &&
+            git pull origin main &&
+            sudo ansible-playbook ansible/playbook.yml
+          "
