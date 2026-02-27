@@ -21,7 +21,7 @@ jobs:
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v3
         with:
-          terraform_version: 1.6.0
+          terraform_version: v1.14.6
 
       - name: Terraform Init
         working-directory: ./terraform
@@ -78,7 +78,7 @@ jobs:
       - name: Deploy on EC2
         run: |
           ssh -o StrictHostKeyChecking=no ubuntu@44.200.243.162 "
-            cd /home/ubuntu/devops-cloud-automation &&
+            cd //home/ec2-user/nsaproject &&
             git pull origin main &&
             sudo ansible-playbook ansible/playbook.yml
           "
