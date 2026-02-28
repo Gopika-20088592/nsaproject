@@ -8,7 +8,7 @@ terraform {
 }
 
 provider "aws" {
-  region = "us-east-1"
+  region = var.aws_region
 }
 
 data "aws_ami" "amazon_linux" {
@@ -28,7 +28,7 @@ data "aws_ami" "amazon_linux" {
 
 resource "aws_security_group" "ssh_access" {
   name        = "assignment-sg"
-  description = "Allow SSH access"
+  description = "Allow SSH and HTTP access for web server"
 
   ingress {
     from_port   = 22
@@ -54,7 +54,7 @@ resource "aws_security_group" "ssh_access" {
 
 resource "aws_instance" "web" {
   ami                    = data.aws_ami.amazon_linux.id
-  instance_type          = "t3.micro"
+  instance_type          = var.instance_type
   vpc_security_group_ids = [aws_security_group.ssh_access.id]
   key_name               = "nsa-key"
 
