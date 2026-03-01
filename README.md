@@ -206,6 +206,7 @@ These problems helped improve understanding of cloud networking and automation w
 4. Using AWS IAM roles for stronger security
 
 **Conclusion**
+
 This project successfully demonstrates a fully automated cloud deployment system. By combining Terraform, Ansible, Docker, and GitHub Actions, the entire process from infrastructure creation to application deployment runs automatically.
 Automation reduces manual errors, improves consistency, and reflects real-world DevOps practices used in modern IT environments.
 
