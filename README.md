@@ -1,9 +1,9 @@
 **Automated Container Deployment and Administration in the Cloud**
 
 **Project Overview**
-This project demonstrates how cloud infrastructure and application deployment can be fully automated using modern DevOps tools.
-The main goal of this project is to automatically create a cloud server, configure it, deploy a web application inside a Docker container, and update the application automatically whenever new code is pushed to GitHub.
-Instead of manually setting up servers and installing software step-by-step, everything in this project is done using automation scripts.
+
+This project demonstrates how, by using modern DevOps tools, cloud infrastructure and application deployment can be automated
+The main goal of this project is to automatically create a cloud server, configure it, deploy a web application using a Docker container, and update the application automatically whenever new code is pushed to GitHub. Instead of manually setting up servers and installing software step-by-step, everything in this project is done using automation scripts.
 
 **Student Details**
 
@@ -206,10 +206,10 @@ These problems helped improve understanding of cloud networking and automation w
 4. Using AWS IAM roles for stronger security
 
 **Conclusion**
-This project successfully demonstrates a fully automated cloud deployment system. By combining Terraform, Ansible, Docker, and GitHub Actions, the entire process from infrastructure creation to application deployment — runs automatically.
+This project successfully demonstrates a fully automated cloud deployment system. By combining Terraform, Ansible, Docker, and GitHub Actions, the entire process from infrastructure creation to application deployment runs automatically.
 Automation reduces manual errors, improves consistency, and reflects real-world DevOps practices used in modern IT environments.
 
 GitHub Repository
 
-Project Repository:
+Project Repository Link:
 https://github.com/Gopika-20088592/nsaproject
